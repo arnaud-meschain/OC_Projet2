@@ -1,6 +1,6 @@
 # OC_Projet2
 
-Première version du script pour une seule page
+Première version du script pour une seule page.
 
 Lancer 'python scrap_page.py'
 puis renseigner l'URL de la page à scraper

@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import re
 import csv
 
+
 urlpage = input("url page a scraper:")
 
 response = urllib.request.urlopen(urlpage)

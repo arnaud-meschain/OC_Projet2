@@ -2,6 +2,7 @@
 
 Version finale du projet
 Chaque scrip peut être lancé via les commandes:
+
 python scrap_page.py
 python scrap_category.py
 python scrap_site.py
@@ -14,5 +15,6 @@ Tous les srcipts demandent si l'on souhaite récupérer également les images. (
 
 pour créer l'environement vituel:
 Récupérer le fichier requirements.txt dans le même repertoire que les 3 scripts et lancer:
+
 pip install -r requirements.txt
 

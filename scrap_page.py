@@ -2,8 +2,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 import re
 
-
-#fonction qui extrait les données d'une page sous forme de bibliothèque, réutilisée par scrap_category.py
+#fonction qui extrait les données d'une page sous forme de bibliothèque, réutilisée par les autres scripts
 def scraper_page(urlpage):
 
 	response = urllib.request.urlopen(urlpage)
@@ -65,9 +64,4 @@ def scraper_page(urlpage):
 	scrap_page['review_rating'] = review_rating
 	scrap_page['image_url'] = img
 	
-	#Nom de fichier csv
-	title_csv = title.text
-	title_csv = re.sub('[<>:«|\/?*"]', '-', title_csv)
-	title_csv = title_csv +".csv"
-
 	return(scrap_page)

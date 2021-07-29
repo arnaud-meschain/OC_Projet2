@@ -1,9 +1,10 @@
 # OC_Projet2
 
-Deuxième version du script pour une seule page qui devient une bibliothèque contenant la fonction 'scraper_page'.
-Cette fonction est utilisée par scrap_category.py, pour estraire les données de toute une categorie de livre.
+Troisème version des scripts.
+scrap_category.py et scrap_page.py sont des bibliothèques réutilisées par scrap_site.py.
 
-Lancer 'python scrap_category.py'
-puis renseigner l'URL de la categorie à scraper
+Pour extraire toutes les données du site:
+Lancer 'python scrap_site.py'
 
-Le script crée un fichier CSV contenant les information de toutes les pages de la catégorie dans le même répertoire sous le nom de la categorie.
+
+Le script crée un fichier CSV  par catégorie contenant les information de toutes les pages de la catégorie dans le même répertoire sous le nom de la categorie.

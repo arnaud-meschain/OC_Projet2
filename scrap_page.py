@@ -1,6 +1,7 @@
 import urllib.request
 from bs4 import BeautifulSoup
 import re
+import csv
 
 #fonction qui extrait les données d'une page sous forme de bibliothèque, réutilisée par les autres scripts
 def scraper_page(urlpage):
@@ -64,4 +65,43 @@ def scraper_page(urlpage):
 	scrap_page['review_rating'] = review_rating
 	scrap_page['image_url'] = img
 	
-	return(scrap_page)
+	#Nom de fichier csv et jpg pour une seule page
+	title_csv = title.text
+	title_csv = re.sub('[<>:«|\/?*"]', '-', title_csv)
+	title_img = title_csv+".jpg"
+	title_csv = title_csv +".csv"
+
+	return(scrap_page, title_csv, img, title_img)
+	
+#utilisation manuelle du script pour une page:
+
+if __name__ == "__main__":
+
+	#demande de saisie de l'url du livre
+	urlpage = input("url page a scraper:")
+	returned = scraper_page(urlpage)
+	#recuperation du contenu de la page
+	scrap_page = {}
+	scrap_page = returned[0]
+
+	#titre pour nommer le CSV et jpg
+	title_csv = returned[1]
+	title_img = returned[3]
+	#création du CSV
+	with open(title_csv, 'w', newline='', encoding='utf-8') as f:
+		fieldnames = ['product_page_url', 'universal_ product_code', 'title', 'price_including_tax', 'price_excluding_tax', 'number_available', 'product_description', 'category', 'review_rating', 'image_url']
+		thewriter = csv.DictWriter(f, fieldnames=fieldnames)
+		thewriter.writeheader()
+		thewriter.writerow(scrap_page)
+
+	#demande si l'on veut garder l'image du livre puis l'enregistre si Y
+	img_check = str(input("Voulez vous enregistrer l'image ? (Y/N): ")).lower().strip()
+	if img_check == 'y':		
+		url_img = scraper_page(urlpage)[2]
+		urllib.request.urlretrieve(url_img, title_img)
+		print("l'image est enregistrée sous le nom :", title_img)
+	elif img_check == 'n':
+		print("l'image ne sera pas enregistrée")
+	else:
+		print("Commande invalide: l'image ne sera pas enregistrée")
+	print("le fichier est enregistré sous le nom :", str(title_csv))

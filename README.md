@@ -1,4 +1,6 @@
-# OC_Projet2
+Scrapper de site https://books.toscrape.com/
+
+
 
 Version finale du projet
 Chaque scrip peut être lancé via les commandes:
